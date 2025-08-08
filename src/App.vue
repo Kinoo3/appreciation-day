@@ -39,15 +39,15 @@ onMounted(() => {
       style="background: url('/assets/zaha%20hadid.webp') left center/cover no-repeat;"
     >
       <!-- Overlay gradient for the content area on the right -->
-      <div class="absolute right-0 top-0 h-full w-1/2" style="background: linear-gradient(to left, rgba(255,255,255,0.85) 60%, rgba(255,255,255,0) 100%);"></div>
-      <div class="relative z-10 flex flex-col items-start justify-center h-full w-1/2 pl-16">
-        <h1 class="text-5xl font-bold text-gray-900 mb-6">Welcome!</h1>
-        <p class="text-lg text-gray-700 mb-8 max-w-md">This is your introduction page. Add your content here, and the left side will always show the building background, separated by a soft gradient on the content area.</p>
-        <button class="px-6 py-3 bg-blue-600 text-white rounded-lg shadow">Get Started</button>
+      <div class="absolute right-0 top-0 h-full w-full" style="background: linear-gradient(to left, rgba(255,255,255,1) 5%, rgba(255,255,255,0.85) 15%, rgba(255,255,255,0) 60%);"></div>
+      <div class="relative z-10 flex flex-col items-center justify-center h-full w-1/2 pl-16">
+        <h1 class="heading mb-6">Mais um ano de muita história juntos</h1>
+        <p class="text-lg text-gray-700 mb-8 max-w-md text-center">Esse é o dia de celebrarmos a sua enorme presença na minha vida</p>
       </div>
     </section>
     <section
-      class="h-screen w-screen snap-start bg-green-500 flex flex-col items-center justify-center shrink-0 relative"
+      class="h-screen w-screen snap-start flex flex-col items-center justify-center shrink-0 relative"
+      style="background: linear-gradient(to right, #fff 0%, #38a169 40%);"
     >
       <div class="text-white text-3xl font-bold mb-8 text-center">Esse ano, a sobremesa é surpresa</div>
       <div class="relative flex items-center justify-center">
@@ -73,6 +73,18 @@ onMounted(() => {
 </template>
 
 <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+.heading {
+  font-family: 'Great Vibes', cursive;
+  font-size: 4rem;
+  color: #2d3748;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.08), 0 0 24px #fff;
+  letter-spacing: 2px;
+  font-weight: 400;
+}
+
 
 .question-mark {
   font-size: 10rem;
