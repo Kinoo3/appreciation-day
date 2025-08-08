@@ -47,9 +47,18 @@ onMounted(() => {
       </div>
     </section>
     <section
-      class="h-screen w-screen snap-start bg-green-500 flex items-center justify-center text-white text-4xl font-bold shrink-0"
+      class="h-screen w-screen snap-start bg-green-500 flex flex-col items-center justify-center shrink-0 relative"
     >
-      Page 2
+      <div class="text-white text-3xl font-bold mb-8 text-center">Esse ano, a sobremesa é surpresa</div>
+      <div class="relative flex items-center justify-center">
+        <span class="question-mark">?</span>
+        <div class="sparkle-container">
+          <span class="sparkle sparkle1"></span>
+          <span class="sparkle sparkle2"></span>
+          <span class="sparkle sparkle3"></span>
+          <span class="sparkle sparkle4"></span>
+        </div>
+      </div>
     </section>
     <section
       class="h-screen w-screen snap-start bg-purple-500 flex items-center justify-center text-white text-4xl font-bold shrink-0"
@@ -64,4 +73,42 @@ onMounted(() => {
 </template>
 
 <style>
+
+.question-mark {
+  font-size: 10rem;
+  color: #fff;
+  text-shadow: 0 0 40px #fff, 0 0 80px #ffe066;
+  position: relative;
+  z-index: 2;
+}
+
+.sparkle-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 12rem;
+  height: 12rem;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.sparkle {
+  position: absolute;
+  width: 1.2rem;
+  height: 1.2rem;
+  background: radial-gradient(circle, #fff 60%, #ffe066 100%, transparent 100%);
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: sparkle 1.5s infinite ease-in-out;
+}
+.sparkle1 { top: 10%; left: 60%; animation-delay: 0s; }
+.sparkle2 { top: 80%; left: 30%; animation-delay: 0.5s; }
+.sparkle3 { top: 40%; left: 80%; animation-delay: 1s; }
+.sparkle4 { top: 70%; left: 0%; animation-delay: 1.2s; }
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.5); }
+}
 </style>
