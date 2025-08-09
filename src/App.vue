@@ -1,5 +1,9 @@
 <script setup>
+
 import { onMounted, onBeforeUnmount, ref } from 'vue';
+import cacarolaImg from '@/assets/caçarola.jpg';
+import peitoRecheadoImg from '@/assets/peito-recheado.webp';
+import zahaHadidImg from '@/assets/zaha hadid.webp';
 
 const scrollContainer = ref(null);
 const currentPage = ref(0);
@@ -9,13 +13,13 @@ const mealOptions = [
     id: 'cacarola',
     name: 'Caçarola de carne moída',
     description: 'Carne moída temperada, assada com batatas e queijo gratinado. Acompanha salada.',
-    image: '/assets/caçarola.jpg',
+    image: cacarolaImg,
   },
   {
     id: 'peito-recheado',
     name: 'Filé de peito recheado',
     description: 'Peito de frango recheado com queijo, bacon e ervas, ao molho especial. Acompanha salada.',
-    image: '/assets/peito-recheado.webp',
+    image: peitoRecheadoImg,
   },
 ];
 const selectedMeal = ref(null);
@@ -48,7 +52,7 @@ onMounted(() => {
   <div ref="scrollContainer" class="h-screen w-screen overflow-x-scroll snap-x snap-mandatory scroll-smooth flex relative">
     <section
       class="h-screen w-screen snap-start flex items-center justify-end shrink-0 relative"
-      style="background: url('/assets/zaha%20hadid.webp') left center/cover no-repeat;"
+      :style="`background: url('${zahaHadidImg}') left center/cover no-repeat;`"
     >
       <div class="absolute right-0 top-0 h-full w-full" style="background: linear-gradient(to left, rgba(255,255,255,1) 5%, rgba(255,255,255,0.85) 15%, rgba(255,255,255,0) 60%);"></div>
       <div class="relative z-10 flex flex-col items-center justify-center h-full w-1/2 pl-16">
