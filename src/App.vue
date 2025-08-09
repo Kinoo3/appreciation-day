@@ -1,9 +1,9 @@
 <script setup>
 
 import { onMounted, onBeforeUnmount, ref } from 'vue';
-const cacarolaImg = '/assets/caçarola.jpg';
-const peitoRecheadoImg = '/assets/peito-recheado.webp';
-const zahaHadidImg = '/assets/zaha hadid.webp';
+const cacarolaImg = '/appreciation-day/assets/caçarola.jpg';
+const peitoRecheadoImg = '/appreciation-day/assets/peito-recheado.webp';
+const zahaHadidImg = '/appreciation-day/assets/zaha hadid.webp';
 
 const scrollContainer = ref(null);
 const currentPage = ref(0);
