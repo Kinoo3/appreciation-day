@@ -4,6 +4,21 @@ import { onMounted, onBeforeUnmount, ref } from 'vue';
 const scrollContainer = ref(null);
 const currentPage = ref(0);
 const numPages = 3;
+const mealOptions = [
+  {
+    id: 'cacarola',
+    name: 'Caçarola de carne moída',
+    description: 'Carne moída temperada, assada com batatas e queijo gratinado. Acompanha salada.',
+    image: '/assets/caçarola.jpg',
+  },
+  {
+    id: 'peito-recheado',
+    name: 'Filé de peito recheado',
+    description: 'Peito de frango recheado com queijo, bacon e ervas, ao molho especial. Acompanha salada.',
+    image: '/assets/peito-recheado.webp',
+  },
+];
+const selectedMeal = ref(null);
 
 onMounted(() => {
   const el = scrollContainer.value;
@@ -11,7 +26,7 @@ onMounted(() => {
   const onWheel = (e) => {
     // Always translate vertical scroll into horizontal scroll
     if (e.deltaY !== 0) {
-      el.scrollLeft += e.deltaY * 50; // Increase multiplier for stronger scroll
+      el.scrollLeft += e.deltaY * 25; // Increase multiplier for stronger scroll
       e.preventDefault();
     }
   };
@@ -63,7 +78,35 @@ onMounted(() => {
     <section
       class="h-screen w-screen snap-start bg-purple-500 flex items-center justify-center text-white text-4xl font-bold shrink-0"
     >
-      Page 3
+      <div class="flex flex-col items-center justify-center w-full h-full">
+        <div class="text-white text-3xl font-bold mb-12 text-center drop-shadow-lg">Selecione uma das opções de prato principal</div>
+        <div class="flex gap-16 items-center justify-center w-full">
+          <div
+            v-for="meal in mealOptions"
+            :key="meal.id"
+            class="bg-white/90 rounded-3xl shadow-2xl p-12 flex flex-col items-center w-96 h-[32rem] cursor-pointer border-4 transition-all duration-200"
+            :class="selectedMeal === meal.id ? 'border-yellow-400 scale-105' : 'border-transparent'"
+            @click="selectedMeal = meal.id"
+          >
+            <img :src="meal.image" alt="" class="w-40 h-40 object-cover rounded-full mb-6 shadow-lg" />
+            <div class="text-3xl font-bold text-purple-700 mb-4">{{ meal.name }}</div>
+            <div class="text-lg text-gray-700 mb-6 text-center">{{ meal.description }}</div>
+            <div v-if="selectedMeal === meal.id" class="mt-4 text-yellow-500 text-xl font-semibold">Selecionado!</div>
+          </div>
+        </div>
+        <div class="mt-12 flex flex-col items-center w-full">
+          <a
+            v-if="selectedMeal"
+            :href="`https://wa.me/5566996528862?text=Olá! Minha escolha de prato principal é: ${mealOptions.find(m => m.id === selectedMeal)?.name}`"
+            target="_blank"
+            class="bg-white hover:bg-gray-100 text-purple-700 font-bold py-4 px-8 rounded-full shadow-lg text-xl flex items-center gap-3 transition-all duration-200 border border-purple-300"
+          >
+            <svg xmlns='http://www.w3.org/2000/svg' class='h-7 w-7' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M16.72 11.06a6.5 6.5 0 10-5.66 5.66l2.12-2.12a1.5 1.5 0 012.12 0l1.42 1.42a1.5 1.5 0 010 2.12l-2.12 2.12a6.5 6.5 0 005.66-5.66z' /></svg>
+            Enviar escolha pelo WhatsApp
+          </a>
+          <span v-else class="text-white/80 text-lg mt-4">Selecione uma opção para enviar sua escolha</span>
+        </div>
+      </div>
     </section>
   </div>
   <!-- Dots indicator at the bottom center, now fixed to viewport -->
